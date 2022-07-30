@@ -1,4 +1,4 @@
-import { getCart, updateCart , deleteItem } from "./DAL/localstorage.js";
+import { getCart, updateCart, deleteItem } from "./DAL/localstorage.js";
 import { renderCartItems, displayTotalCost } from "./LAYOUT/renderUi.js";
 import {
   validateAdress,

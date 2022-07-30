@@ -10,6 +10,9 @@ import {
 import { adressRegExp, nameRegExp, emailRegExp, url } from "../UTILS/const.js";
 import { getCart, clearCart } from "./localstorage.js";
 
+//on check la validité des données saisies dans le formulaire, elles doivent
+//etre conformes aux exigences des regex
+
 function validateAdress() {
   badFormAdress.innerText = `${
     adressRegExp.test(adress.value) ? "" : "Entrez une adresse valide svp"
@@ -27,6 +30,8 @@ function validateEmail() {
   }`;
 }
 
+//on s'assure que tous les elements du formulaire sont valides
+
 function checkForm() {
   if (
     nameRegExp.test(firstName.value) &&
@@ -41,6 +46,8 @@ function checkForm() {
   }
 }
 
+//on envoie la requete a l'api
+//on recupere le numuéro de commande et on redirige vers la page confirmation
 async function sendOrder(e) {
   e.preventDefault();
   const idProducts = getCart().map((item) => item.id);

@@ -11,6 +11,8 @@ import {
 import { items } from "../UTILS/const.js";
 import { getCart } from "../DAL/localstorage.js ";
 
+//on affiche tous les items dynamiquement , en récupérant leurs données via items
+
 function renderHomepageItems(items) {
   homePageItems.innerHTML = items
     .map((item) => {
@@ -28,6 +30,9 @@ function renderHomepageItems(items) {
     .join(" ");
 }
 
+//on se trouve sur la page d'un objet , la fonction getData le sait et nous renvoie ses données
+// on les traite et on les affiche
+
 function renderSpecificPageItem(item) {
   const { altTxt, colors, description, imageUrl, name, price } = item;
   pageTitle[0].innerText = name;
@@ -42,6 +47,10 @@ function renderSpecificPageItem(item) {
     .join(" ");
   itemColor.innerHTML = `<option value="">--SVP, choisissez une couleur --</option> ${colorOptions}`;
 }
+
+//affichage des éléments du panier
+//on récupère les données manquantes du panier ( prix , image , txt alt , nom )
+// on return le tout sous forme d'html, avec les données dynamiquements intégrées
 
 function renderCartItems(itemCart) {
   cartItemsContainer.innerHTML = itemCart
@@ -76,6 +85,13 @@ function renderCartItems(itemCart) {
     .join(" ");
 }
 
+// on calcule le prix total du panier
+// en mapant a travers le panier
+// on récupère la quantité de l'objet, on récupère son prix,
+// on multiplie le prix par la quantity,
+// on incrémente le nombre total d'objet,
+// on affiche les données.
+
 function displayTotalCost() {
   let itemQuantity = 0;
   let totalPrice = 0;
@@ -96,5 +112,5 @@ export {
   renderHomepageItems,
   renderSpecificPageItem,
   renderCartItems,
-  displayTotalCost
+  displayTotalCost,
 };
